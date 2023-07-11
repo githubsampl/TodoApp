@@ -1,0 +1,9 @@
+Add todo:<input type="text" placeholder="enter todo" [(ngModel)]="this.value">
+<button (click)="addTask()">added</button>
+<div *ngFor="let task of this.tasks">
+    {{task[0]}}
+    {{task[1]}}
+    <button (click)="removeTask(task[0])">delete</button>
+    <button (click)="updateTask(task)">update</button>
+    <input *ngIf="task[1]" placeholder="update">
+</div> 
