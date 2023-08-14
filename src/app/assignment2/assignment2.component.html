@@ -1,0 +1,6 @@
+
+app.component.html
+<input type='text'[(ngModel)] = 'userInput'> 
+<button [disabled] = 'userInput === ""' (click)='userInput =""'>reset</button>
+<hr>
+{{userInput}}

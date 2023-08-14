@@ -1,4 +1,3 @@
-import { Conditional } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,7 +8,8 @@ import { Component } from '@angular/core';
 export class TaskComponent {
   title:string = 'Todo';
   tasks:[string,boolean] [] = [];
-  value:string=""
+  value:string="";
+  updateValue:string ="";
 
   addTask(){
     this.tasks.push([this.value,false]);
@@ -25,13 +25,21 @@ removeTask(delString:string){
     });
 }
  
-    updateTask(taskChange:[string,boolean]){
-      this.tasks = this.tasks.map((task)=>{
-        if(task[0] === taskChange[0]){
-          return [task[0],!task[1]]
+    updateTask(oldTask:string){
+      this.tasks = this.tasks.map((each)=>
+      {
+        if(each[0] === oldTask && each[1] === false){
+          console.log("element",each[0],each[1])
+          return [oldTask,true]
         }
-        return task
-      })
-    }
+       else if(each[0] === oldTask && each[1]=== true){
+         return [this.updateValue,false]
+       }
+       else{
+        return each
+       }
 
-  }
+        })
+      }
+
+}
